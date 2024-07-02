@@ -1,7 +1,10 @@
-include ./srcs/.env
 COMPOSE_FILE_PATH = ./srcs/docker-compose.yml
 PROJECT_NAME = inception
+VOLUME_PATH = ${HOME}/data
+# Make the volume path available to the docker-compose file as an environment variable
+export VOLUME_PATH
 
+# Create volume folders, build the images and start the containers
 all: create_volume_folders up
 
 up:
@@ -15,7 +18,7 @@ create_volume_folders:
 	mkdir -p ${VOLUME_PATH}/mariadb
 
 delete_volume_folders:
-	rm -rf ${VOLUMES_PATH}
+	rm -rf ${VOLUME_PATH}
 
 clean: down delete_volume_folders
 	docker network prune -f

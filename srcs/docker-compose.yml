@@ -1,12 +1,13 @@
 services:
   mariadb:
+    image: mariadb
     container_name: mariadb
     build: 
       context: requirements/mariadb
       dockerfile: Dockerfile
     env_file:
       - .env
-    restart: unless-stopped
+    restart: on-failure
     expose:
       - 3306
     volumes:
@@ -15,6 +16,7 @@ services:
       - inception
 
   nginx:
+    image: nginx
     container_name: nginx
     depends_on:
       - wordpress
@@ -31,6 +33,7 @@ services:
       - inception
 
   wordpress:
+    image: wordpress
     container_name: wordpress
     env_file: .env
     build: 
