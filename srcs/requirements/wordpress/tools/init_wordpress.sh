@@ -2,7 +2,7 @@
 # Script to initialize wordpress wp-config.php with WP-CLI
 
 # Make sure that the database is up and running
-sleep 10
+sleep 3
 
 # Check if the wp-config.php file does not exist
 if [ ! -f /var/www/wordpress/wp-config.php ]; then

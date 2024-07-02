@@ -1,9 +1,9 @@
 FROM debian:buster
 
-ENV SQL_DATABASE=mydatabase
-ENV SQL_USER=eric
-ENV SQL_PASSWORD=sqlpassword
-ENV SQL_ROOT_PASSWORD=sqlrootpassword
+ARG SQL_DATABASE
+ARG SQL_USER
+ARG SQL_PASSWORD
+ARG SQL_ROOT_PASSWORD
 
 RUN apt-get update -y && apt-get upgrade -y
 
@@ -20,11 +20,3 @@ RUN service mysql start && sh /tmp/init_MariaDB.sh
 EXPOSE 3306
 
 CMD [ "mysqld" ]
-
-# COPY conf/50-server_test.cnf	/etc/mysql/mariadb.conf.d/50-server.cnf
-
-# COPY tools/init_MariaDB_test.sh /tmp/init_MariaDB.sh
-
-# ENTRYPOINT ["bash", "/tmp/init_MariaDB.sh"]
-
-# EXPOSE 3306

@@ -4,10 +4,6 @@ RUN apt-get update && apt-get upgrade -y
 
 RUN apt-get install -y nginx
 
-# RUN apt install -y vim
-
-# RUN apt install -y curl
-
 RUN apt-get install -y openssl
 
 RUN mkdir -p /etc/nginx/ssl
@@ -19,6 +15,7 @@ RUN mkdir -p /var/run/nginx
 COPY conf/nginx.conf /etc/nginx/nginx.conf
 
 RUN chmod 755 /var/www/html
+
 RUN chown -R www-data:www-data /var/www/html
 
 CMD [ "nginx", "-g", "daemon off;" ]

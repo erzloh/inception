@@ -1,10 +1,5 @@
 FROM debian:buster
 
-ENV SQL_DATABASE=mydatabase
-ENV SQL_USER=eric
-ENV SQL_PASSWORD=sqlpassword
-ENV SQL_ROOT_PASSWORD=sqlrootpassword
-
 RUN apt update -y && apt upgrade -y
 
 RUN apt install -y wget
